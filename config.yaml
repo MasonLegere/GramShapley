@@ -1,0 +1,43 @@
+scenario_1:
+  hospitals:
+    xavier:
+      open_positions: 1
+      preferences:
+        - amy
+        - bertha
+        - clare
+        - david
+    yancey:
+      open_positions: 2
+      preferences:
+        - bertha
+        - amy
+        - clare
+        - david
+    zeus:
+      open_positions: 1
+      preferences:
+        - amy
+        - bertha
+        - clare
+        - david
+
+  residents:
+    amy:
+      - yancey
+      - xavier
+      - zeus
+    bertha:
+      - xavier
+      - yancey
+      - zeus
+    clare:
+      - xavier
+      - yancey
+      - zeus
+    david:
+      - xavier
+      - yancey
+      - zeus
+
+
