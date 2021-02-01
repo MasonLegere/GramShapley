@@ -1,43 +1,156 @@
-scenario_1:
+scenario1:
   hospitals:
-    xavier:
+    hospital1:
       open_positions: 1
       preferences:
-        - amy
-        - bertha
-        - clare
-        - david
-    yancey:
+        - resident6
+        - resident2
+        - resident3
+        - resident4
+        - resident5
+        - resident1
+    hospital2:
+      open_positions: 3
+      preferences:
+        - resident4
+        - resident5
+        - resident3
+        - resident1
+        - resident2
+        - resident6
+    hospital3:
       open_positions: 2
       preferences:
-        - bertha
-        - amy
-        - clare
-        - david
-    zeus:
-      open_positions: 1
-      preferences:
-        - amy
-        - bertha
-        - clare
-        - david
+        - resident1
+        - resident2
+        - resident3
+        - resident4
+        - resident5
+        - resident6
 
   residents:
-    amy:
-      - yancey
-      - xavier
-      - zeus
-    bertha:
-      - xavier
-      - yancey
-      - zeus
-    clare:
-      - xavier
-      - yancey
-      - zeus
-    david:
-      - xavier
-      - yancey
-      - zeus
+    resident1:
+      - hospital1
+      - hospital2
+      - hospital3
+    resident2:
+      - hospital2
+      - hospital2
+      - hospital1
+    resident3:
+      - hospital1
+      - hospital2
+      - hospital3
+    resident4:
+      - hospital3
+      - hospital2
+      - hospital1
+    resident5:
+      - hospital3
+      - hospital2
+      - hospital1
+    resident6:
+      - hospital3
+      - hospital2
+      - hospital1
+
+scenario2:
+  hospitals:
+    hospital1:
+      open_positions: 1
+      preferences:
+        - resident1
+        - resident2
+        - resident4
+        - resident5
+        - resident6
+        - resident3
+        - resident7
+        - resident8
+        - resident9
+        - resident10
+        - resident11
+        - resident12
+    hospital2:
+      open_positions: 7
+      preferences:
+        - resident6
+        - resident5
+        - resident2
+        - resident1
+        - resident3
+        - resident4
+        - resident7
+        - resident8
+        - resident9
+        - resident10
+        - resident11
+        - resident12
+    hospital3:
+      open_positions: 2
+      preferences:
+        - resident1
+        - resident2
+        - resident3
+        - resident4
+        - resident5
+        - resident6
+        - resident7
+        - resident8
+        - resident9
+        - resident10
+        - resident11
+        - resident12
+
+  residents:
+    resident1:
+      - hospital1
+      - hospital2
+      - hospital3
+    resident2:
+      - hospital3
+      - hospital2
+      - hospital1
+    resident3:
+      - hospital1
+      - hospital2
+      - hospital3
+    resident4:
+      - hospital3
+      - hospital2
+      - hospital1
+    resident5:
+      - hospital3
+      - hospital2
+      - hospital1
+    resident6:
+      - hospital3
+      - hospital2
+      - hospital1
+    resident7:
+      - hospital1
+      - hospital2
+      - hospital3
+    resident8:
+      - hospital3
+      - hospital2
+      - hospital1
+    resident9:
+      - hospital1
+      - hospital2
+      - hospital3
+    resident10:
+      - hospital3
+      - hospital2
+      - hospital1
+    resident11:
+      - hospital3
+      - hospital2
+      - hospital1
+    resident12:
+      - hospital3
+      - hospital2
+      - hospital1
+
 
 

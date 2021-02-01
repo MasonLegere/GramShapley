@@ -1,15 +1,14 @@
 import argparse
 import copy
 from typing import Final
+
 import pandas as pd
 import yaml
 from tabulate import tabulate
 
 parser = argparse.ArgumentParser(description='Implementation of the Gale-Shapley algorithm')
-parser.add_argument('scenario', metavar='S', type=str, nargs=1, help='The scenario to be ran as specified in '
-                                                                     'config.yaml')
-# TODO: add argument for configuration file location
-# TODO: add command to run all tests
+parser.add_argument('-s', action='store', dest='scenario', help='The scenario to be ran as specified in '
+                                                                'config.yaml')
 
 
 def print_matching(pairs):
@@ -29,6 +28,8 @@ class GaleShapley:
         self._parameters = GaleShapley.PARAMETERS[scenario]
         self._hospitals = self._parameters['hospitals']
         self._residents = self._parameters['residents']
+        self._rankings = {name: {k: v for v, k in enumerate(preferences)} for name, preferences in
+                          self._residents.items()}
 
     def __call__(self, *args, **kwargs):
         return self.apply()
@@ -37,8 +38,6 @@ class GaleShapley:
 
         pairs = {}
         hospitals_remaining = copy.deepcopy(self._hospitals)
-        rankings = {name: {k: v for v, k in enumerate(resident)} for name, resident in self._residents.items()}
-
         while hospitals_remaining:
             hospital_name, values = next(iter(hospitals_remaining.items()))
             preferences = values['preferences']
@@ -46,6 +45,7 @@ class GaleShapley:
             if preferences:
                 resident = preferences.pop(0)
 
+                # if resident has not been seen yet
                 if resident not in pairs:
                     pairs[resident] = hospital_name, values
 
@@ -53,26 +53,25 @@ class GaleShapley:
                     if values['open_positions'] == 0:
                         hospitals_remaining.pop(hospital_name)
 
-
+                # else check to see if new choice it better
                 else:
                     previous_name, previous_values = pairs[resident]
-                    if rankings[resident][hospital_name] < rankings[resident][previous_name]:
+                    if self._rankings[resident][hospital_name] < self._rankings[resident][previous_name]:
 
+                        # increment values to reflect free seats
                         pairs[resident] = hospital_name, values
                         values['open_positions'] -= 1
 
-                        if values['open_positions'] == 0:
+                        if previous_values['open_positions'] == 0:
                             hospitals_remaining[previous_name] = previous_values
 
                         if values['open_positions'] == 0:
                             hospitals_remaining.pop(hospital_name)
 
                         previous_values['open_positions'] += 1
-
         return pairs
 
 
 if __name__ == '__main__':
     args = parser.parse_args()
-    # TODO: refactor to include configuration test
-    print_matching(GaleShapley('scenario_1').find_matching())
+    print_matching(GaleShapley(args.scenario).find_matching())
