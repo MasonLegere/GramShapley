@@ -5,8 +5,7 @@ several residents R<sub>1</sub>, R<sub>2</sub>, ..., R<sub>k</sub> where the hos
 
 
 Scenarios to be run are included in `config.yaml` where you provide a scenario name followed by a dictionary of `hospitals` and `residents`. For both 
-you must include the list of corresponding preferences, and with hospitals you must also specify  `open_positions` which references 
-to the number of residents a hospital will accept. 
+you must include the list of corresponding preferences, and with hospitals you must also specify  `open_positions` which is the number of open positions at a hospital. 
 
 ### Correctness: 
 Pseudocode of the modified Gale-Shapley algorithm as well as proof of correctness and worst-case runtime performance is included 
@@ -24,7 +23,7 @@ foo@bar:~$ pip install -r requirements.txt
 ```
  To run a particular `scenario = example` that must be included in `config.yaml` run:
 ```console
-foo@bar:~$ python main.py -s $example
+foo@bar:~$ python main.py -s $scenario
 ```
 
 
