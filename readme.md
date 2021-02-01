@@ -31,7 +31,7 @@ foo@bar:~$ python main.py -s $example
 ### Output Examples:
 Using the two included examples, `scenario1` and `scenario2` in `config.yaml` we get
 ```console
- foo@bar:~$ python main.py -s scenario1
+foo@bar:~$ python main.py -s scenario1
 +----+-------------+-------------+-------------+
 |    | hospital1   | hospital3   | hospital2   |
 |----+-------------+-------------+-------------|
@@ -39,7 +39,8 @@ Using the two included examples, `scenario1` and `scenario2` in `config.yaml` we
 |  1 | -           | resident2   | resident5   |
 |  2 | -           | -           | resident3   |
 +----+-------------+-------------+-------------+
-
+```
+```console
 foo@bar:~$ python main.py -s scenario2
 +----+-------------+-------------+-------------+
 |    | hospital2   | hospital1   | hospital3   |
